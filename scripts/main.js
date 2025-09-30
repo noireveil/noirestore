@@ -14,14 +14,20 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 1000);
     }
 
-    if (enterButton) {
-        enterButton.addEventListener('click', () => {
-            enterSiteWithAnimation();
-        });
-    } else {
-        mainContent.classList.remove('hidden');
+    function showMainContentInstantly() {
+        landingPage.style.display = 'none';
         mainContent.classList.add('visible');
         document.documentElement.classList.remove('landing-active');
-        landingPage.style.display = 'none';
+    }
+
+    if (sessionStorage.getItem('hasEntered') === 'true') {
+        showMainContentInstantly();
+    } else {
+        if (enterButton) {
+            enterButton.addEventListener('click', () => {
+                sessionStorage.setItem('hasEntered', 'true');
+                enterSiteWithAnimation();
+            });
+        }
     }
 });
