@@ -19,11 +19,18 @@
 
 ## ✨ Tampilan Web
 
-Berikut adalah tampilan dari halaman utama dan halaman "Tentang Kami" yang menampilkan desain modern dan interaktif.
+Berikut adalah tampilan dari halaman landing yang imersif dan halaman "Tentang Kami" yang menampilkan filosofi brand.
 
-<p align="center">
-  <img src="./images/preview.png" alt="Tampilan Noirestore" width="800"/>
-</p>
+<table align="center">
+  <tr>
+    <td align="center"><strong>Halaman Landing</strong></td>
+    <td align="center"><strong>Halaman Tentang Kami</strong></td>
+  </tr>
+  <tr>
+    <td><img src="./images/preview-landing.png" alt="Tampilan Halaman Landing" width="400"></td>
+    <td><img src="./images/preview-about.png" alt="Tampilan Halaman Tentang Kami" width="400"></td>
+  </tr>
+</table>
 
 ---
 
