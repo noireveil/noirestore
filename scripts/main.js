@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const mainContent = document.getElementById('main-content');
     const enterButton = document.getElementById('enter-button');
 
+    // Fungsi untuk transisi dari landing page ke konten utama
     function enterSiteWithAnimation() {
         landingPage.classList.add('hidden');
         mainContent.classList.remove('hidden');
@@ -14,20 +15,16 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 1000);
     }
 
-    function showMainContentInstantly() {
-        landingPage.style.display = 'none';
+    // Cukup pasang event listener pada tombol, tanpa logika if/else atau storage
+    if (enterButton) {
+        enterButton.addEventListener('click', () => {
+            enterSiteWithAnimation();
+        });
+    } else {
+        // Fallback jika tombol tidak ditemukan, langsung tampilkan konten
+        mainContent.classList.remove('hidden');
         mainContent.classList.add('visible');
         document.documentElement.classList.remove('landing-active');
-    }
-
-    if (sessionStorage.getItem('hasEntered') === 'true') {
-        showMainContentInstantly();
-    } else {
-        if (enterButton) {
-            enterButton.addEventListener('click', () => {
-                sessionStorage.setItem('hasEntered', 'true');
-                enterSiteWithAnimation();
-            });
-        }
+        landingPage.style.display = 'none';
     }
 });
