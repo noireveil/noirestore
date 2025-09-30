@@ -1,0 +1,43 @@
+document.addEventListener('DOMContentLoaded', () => {
+    const landingPage = document.getElementById('landing-page');
+    const mainContent = document.getElementById('main-content');
+    const enterButton = document.getElementById('enter-button');
+
+    // Fungsi untuk menampilkan konten utama DENGAN animasi (hanya untuk pertama kali)
+    function enterSiteWithAnimation() {
+        landingPage.classList.add('hidden');
+        mainContent.classList.remove('hidden');
+        mainContent.classList.add('visible');
+        document.documentElement.classList.remove('landing-active');
+
+        // Animasi gambar produk
+        const productImages = document.querySelectorAll('.card-banner-image');
+        productImages.forEach((img, index) => {
+            setTimeout(() => {
+                img.classList.add('slide-up');
+            }, index * 200);
+        });
+
+        setTimeout(() => {
+            landingPage.style.display = 'none';
+        }, 1000);
+    }
+
+    // Fungsi untuk menampilkan konten utama secara instan (tanpa animasi/delay)
+    function showMainContentInstantly() {
+        landingPage.style.display = 'none'; 
+        mainContent.classList.add('visible');
+        document.documentElement.classList.remove('landing-active');
+    }
+
+    if (sessionStorage.getItem('hasEntered') === 'true') {
+        showMainContentInstantly();
+    } else {
+        if (enterButton) {
+            enterButton.addEventListener('click', () => {
+                sessionStorage.setItem('hasEntered', 'true');
+                enterSiteWithAnimation();
+            });
+        }
+    }
+});

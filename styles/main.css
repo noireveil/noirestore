@@ -1,0 +1,480 @@
+/* Pengaturan Global & Variabel */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap');
+:root {
+    /* Colors */
+    --warna-ungu: #8A2BE2;
+    --warna-cyan: #00BFFF;
+    --warna-pink: #FF007F;
+    --warna-background: #0D0F1A;
+    --warna-permukaan: rgba(22, 27, 34, 0.75);
+    --warna-border: rgba(100, 116, 139, 0.3);
+    --warna-teks-utama: #F8F9FA;
+    --warna-teks-kedua: #A0AEC0;
+
+    /* Fonts */
+    --font-utama: 'Poppins', sans-serif;
+    --font-tebal: 700;
+    --font-sangat-tebal: 800;
+
+    /* Spacing & Radius */
+    --spasi-medium: 16px;
+    --spasi-large: 24px;
+    --spasi-xl: 32px;
+    --spasi-xxl: 64px;
+    --border-radius: 16px;
+
+    /* Transitions */
+    --transisi-halus: 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+    --transisi-panjang: 1s cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+html.landing-active {
+    overflow: hidden;
+}
+
+html:not(.landing-active) {
+    overflow-y: scroll;
+}
+
+body {
+    font-family: var(--font-utama);
+    background-color: var(--warna-background);
+    color: var(--warna-teks-utama);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* Animasi Keyframes */
+@keyframes revealFromBottom {
+    from { transform: translateY(0%); }
+    to { transform: translateY(-100%); }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes gradientShift {
+    to { background-position: 200% center; }
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+/* Halaman Landing */
+#landing-page {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: var(--warna-background);
+    background-size: cover;
+    background-position: center;
+    background-image:
+        radial-gradient(ellipse at 85% 40%, rgba(30, 144, 255, 0.3) 0%, transparent 50%),
+        radial-gradient(ellipse at 75% 55%, rgba(160, 50, 190, 0.5) 0%, transparent 60%),
+        linear-gradient(to right, rgba(13, 15, 26, 0.85) 35%, transparent 65%),
+        url('../images/hero-background.jpg');
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+}
+
+#landing-page::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--warna-background);
+    z-index: 1;
+    animation: revealFromBottom 1.2s cubic-bezier(0.77, 0, 0.175, 1) forwards;
+    animation-delay: 0.5s;
+}
+
+#landing-page.hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.landing-content {
+    max-width: 700px;
+    padding: 0 2rem 0 8%;
+    z-index: 2;
+    position: relative;
+    text-align: left;
+}
+
+.landing-content h1,
+.landing-content p,
+.landing-content .cta-button {
+    opacity: 0;
+    animation: fadeIn 0.8s ease-out forwards;
+}
+
+.landing-content h1 {
+    animation-delay: 1.5s;
+    font-size: 3.5rem;
+    font-weight: var(--font-sangat-tebal);
+    line-height: 1.2;
+}
+
+.landing-content p {
+    animation-delay: 1.8s;
+    font-size: 1.2rem;
+    color: var(--warna-teks-kedua);
+    margin: var(--spasi-large) 0 var(--spasi-xl) 0;
+}
+
+.landing-content .cta-button {
+    animation-delay: 2.1s;
+}
+
+.landing-content h1 span {
+    background: linear-gradient(90deg, #A855F7, #EC4899, #FDE68A, #A855F7);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-size: 200% auto;
+    animation: gradientShift 3s linear infinite;
+}
+
+/* Layout Konten Utama */
+#main-content {
+    display: none;
+    opacity: 0;
+    transition: opacity 1s ease-out;
+}
+
+#main-content.visible {
+    display: block;
+    opacity: 1;
+}
+
+.main-wrapper {
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    min-height: 100vh;
+}
+
+main {
+    width: 100%;
+}
+
+/* Header & Navigasi */
+header {
+    padding: var(--spasi-large) 0;
+    border-bottom: 1px solid var(--warna-border);
+    background-color: rgba(13, 15, 26, 0.8);
+    backdrop-filter: blur(12px);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.8rem;
+    font-weight: var(--font-sangat-tebal);
+    text-decoration: none;
+    color: var(--warna-teks-utama);
+    display: flex;
+    align-items: center;
+}
+
+.logo::before {
+    content: '';
+    display: block;
+    width: 35px;
+    height: 35px;
+    background-image: url('../images/noire-icon.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    margin-right: 15px;
+}
+
+.logo span {
+    color: var(--warna-cyan);
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: var(--spasi-xl);
+}
+
+nav a {
+    color: var(--warna-teks-kedua);
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: var(--font-tebal);
+    transition: color 0.3s ease;
+}
+
+nav a:hover {
+    color: var(--warna-cyan);
+}
+
+nav a.active {
+    color: var(--warna-cyan);
+    border-bottom: 3px solid;
+    border-image: linear-gradient(90deg, #A855F7, #EC4899, #FDE68A) 1;
+    padding-bottom: 5px;
+}
+
+/* Tombol Global */
+.buy-button,
+.cta-button {
+    margin-top: auto;
+    display: inline-block;
+    width: auto;
+    background: linear-gradient(90deg, var(--warna-cyan), var(--warna-ungu));
+    color: var(--warna-teks-utama);
+    border: none;
+    padding: var(--spasi-medium) var(--spasi-xl);
+    border-radius: var(--border-radius);
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-weight: var(--font-tebal);
+    text-align: center;
+    transition: all var(--transisi-halus);
+    background-size: 200% 100%;
+    cursor: pointer;
+}
+
+.buy-button:hover,
+.cta-button:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 191, 255, 0.2);
+    background-position: 100% 0;
+}
+
+/* Bagian Produk & Kartu */
+.products-section {
+    padding: var(--spasi-xxl) 0;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 3rem;
+    font-weight: var(--font-sangat-tebal);
+    margin-bottom: var(--spasi-xxl);
+}
+
+.game-section {
+    margin-bottom: var(--spasi-xxl);
+}
+
+.game-title {
+    font-size: 2rem;
+    font-weight: var(--font-tebal);
+    margin-bottom: var(--spasi-large);
+    padding-bottom: var(--spasi-medium);
+    border-bottom: 2px solid var(--warna-border);
+}
+
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+    gap: var(--spasi-xl);
+}
+
+.product-card {
+    background: var(--warna-permukaan);
+    border: 1px solid var(--warna-border);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    transition: all var(--transisi-halus);
+    position: relative;
+    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0 100%);
+}
+
+.product-card::before {
+    content: '';
+    position: absolute;
+    inset: -1px;
+    z-index: -1;
+    background: conic-gradient(from 180deg at 50% 50%, var(--warna-ungu), var(--warna-cyan), var(--warna-pink), var(--warna-ungu));
+    opacity: 0;
+    transition: opacity var(--transisi-halus);
+}
+
+.product-card:hover {
+    transform: translateY(-10px);
+    border-color: transparent;
+}
+
+.product-card:hover::before {
+    opacity: 1;
+}
+
+.card-banner {
+    width: 100%;
+    height: 140px;
+    overflow: hidden;
+}
+
+.card-banner-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform var(--transisi-halus);
+}
+
+.product-card:hover .card-banner-image {
+    transform: scale(1.1);
+}
+
+.card-content {
+    padding: var(--spasi-large);
+    display: flex;
+    flex-direction: column;
+    min-height: 200px;
+}
+
+.currency-info {
+    display: flex;
+    align-items: center;
+    gap: var(--spasi-medium);
+    margin-bottom: var(--spasi-medium);
+}
+
+.currency-icon {
+    width: 40px;
+    height: 40px;
+}
+
+.currency-amount {
+    font-size: 1.3rem;
+    font-weight: var(--font-tebal);
+}
+
+.product-price {
+    font-size: 1.1rem;
+    color: var(--warna-teks-kedua);
+    margin-bottom: var(--spasi-large);
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: var(--spasi-xl) 0;
+    color: var(--warna-teks-kedua);
+    background-color: rgba(13, 15, 26, 0.5);
+    margin-top: auto;
+    border-top: 1px solid var(--warna-border);
+}
+
+.content-section {
+    width: 100%;
+    padding: var(--spasi-xxl) 0;
+}
+
+/* Efek Mesin Ketik */
+#typing-cursor {
+    display: inline-block;
+    background-color: var(--warna-cyan);
+    width: 3px;
+    height: 1.4rem;
+    animation: blink 1s infinite;
+    vertical-align: middle;
+    margin-left: 2px;
+}
+
+#philosophy-name,
+#philosophy-logo {
+    visibility: hidden;
+}
+
+/* Gaya Khusus Halaman 'Tentang Kami' */
+.page-about main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: calc(100vh - 160px);
+    padding: 4rem 0;
+}
+
+.about-container {
+    width: 100%;
+    max-width: 960px;
+}
+
+.about-text {
+    text-align: center;
+}
+
+@keyframes floatAnimation {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
+}
+
+#about-logo {
+    display: block;
+    margin: 0 auto 24px auto;
+    width: 100%;
+    max-width: 180px;
+    border-radius: 50%;
+    box-shadow: 0 0 40px rgba(0, 191, 255, 0.3),
+                0 0 60px rgba(138, 43, 226, 0.2);
+    animation: floatAnimation 4s ease-in-out infinite;
+}
+
+.about-text h1 {
+    margin-bottom: 48px;
+}
+
+.philosophy-columns {
+    display: flex;
+    gap: 48px;
+    text-align: justify;
+}
+
+.column {
+    flex: 1;
+}
+
+.philosophy-columns h2 {
+    font-size: 1.5rem;
+    font-weight: var(--font-tebal);
+    color: var(--warna-cyan);
+    margin-bottom: 16px;
+    padding-bottom: 16px;
+    border-bottom: 2px solid var(--warna-border);
+    text-align: left;
+}
+
+.philosophy-columns p {
+    font-size: 1rem;
+    line-height: 1.8;
+    color: var(--warna-teks-kedua);
+}
