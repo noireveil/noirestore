@@ -6,6 +6,13 @@
 
 <p align="center">
   <strong>Website E-commerce Fungsional untuk Layanan Top-Up Game</strong>
+  <br />
+  <br />
+  <a href="https://noireveil.github.io/noirestore/"><strong>Lihat Demo Langsung »</strong></a>
+</p>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/Status-Online-brightgreen?style=for-the-badge" alt="Website Status">
 </p>
 
 ---
@@ -56,12 +63,13 @@ Proyek ini dibangun sepenuhnya menggunakan teknologi web fundamental tanpa bantu
 
 ## 🚀 Cara Menjalankan Secara Lokal
 
+Untuk mendapatkan pengalaman development terbaik yang menyerupai server online, direkomendasikan untuk menggunakan ekstensi **Live Server**.
+
 1.  **Clone repository ini:**
     ```bash
     git clone [https://github.com/noireveil/noirestore.git](https://github.com/noireveil/noirestore.git)
     ```
-2.  **Masuk ke direktori proyek:**
-    ```bash
-    cd noirestore
-    ```
-3.  **Buka file `index.html`** di browser pilihan Anda.
+2.  **Buka folder proyek** dengan code editor seperti **Visual Studio Code**.
+3.  **Instal ekstensi "Live Server"** (oleh Ritwick Dey) dari marketplace VS Code.
+4.  Setelah terinstal, klik kanan pada file `index.html` di dalam editor Anda dan pilih **"Open with Live Server"**.
+5.  Website akan otomatis terbuka di browser Anda dan akan me-refresh secara otomatis setiap kali Anda menyimpan perubahan pada kode.
