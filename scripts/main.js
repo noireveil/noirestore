@@ -10,33 +10,20 @@ document.addEventListener('DOMContentLoaded', () => {
         mainContent.classList.add('visible');
         document.documentElement.classList.remove('landing-active');
 
-        const productImages = document.querySelectorAll('.card-banner-image');
-        productImages.forEach((img, index) => {
-            setTimeout(() => {
-                img.classList.add('slide-up');
-            }, index * 200);
-        });
-
+        // setTimeout untuk memastikan transisi berjalan lancar
         setTimeout(() => {
             landingPage.style.display = 'none';
-        }, 1000);
+        }, 1000); // Durasi ini harus cocok dengan transisi di CSS
     }
 
-    // Fungsi untuk menampilkan konten utama secara instan
-    function showMainContentInstantly() {
-        landingPage.style.display = 'none';
+    if (enterButton) {
+        enterButton.addEventListener('click', () => {
+            enterSiteWithAnimation();
+        });
+    } else {
+        mainContent.classList.remove('hidden');
         mainContent.classList.add('visible');
         document.documentElement.classList.remove('landing-active');
-    }
-
-    if (localStorage.getItem('hasEntered') === 'true') {
-        showMainContentInstantly();
-    } else {
-        if (enterButton) {
-            enterButton.addEventListener('click', () => {
-                localStorage.setItem('hasEntered', 'true');
-                enterSiteWithAnimation();
-            });
-        }
+        landingPage.style.display = 'none';
     }
 });
