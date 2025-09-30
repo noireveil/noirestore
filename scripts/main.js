@@ -3,14 +3,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const mainContent = document.getElementById('main-content');
     const enterButton = document.getElementById('enter-button');
 
-    // Fungsi untuk menampilkan konten utama DENGAN animasi (hanya untuk pertama kali)
+    // Fungsi untuk menampilkan konten utama DENGAN animasi
     function enterSiteWithAnimation() {
         landingPage.classList.add('hidden');
         mainContent.classList.remove('hidden');
         mainContent.classList.add('visible');
         document.documentElement.classList.remove('landing-active');
 
-        // Animasi gambar produk
         const productImages = document.querySelectorAll('.card-banner-image');
         productImages.forEach((img, index) => {
             setTimeout(() => {
@@ -23,19 +22,19 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 1000);
     }
 
-    // Fungsi untuk menampilkan konten utama secara instan (tanpa animasi/delay)
+    // Fungsi untuk menampilkan konten utama secara instan
     function showMainContentInstantly() {
-        landingPage.style.display = 'none'; 
+        landingPage.style.display = 'none';
         mainContent.classList.add('visible');
         document.documentElement.classList.remove('landing-active');
     }
 
-    if (sessionStorage.getItem('hasEntered') === 'true') {
+    if (localStorage.getItem('hasEntered') === 'true') {
         showMainContentInstantly();
     } else {
         if (enterButton) {
             enterButton.addEventListener('click', () => {
-                sessionStorage.setItem('hasEntered', 'true');
+                localStorage.setItem('hasEntered', 'true');
                 enterSiteWithAnimation();
             });
         }
