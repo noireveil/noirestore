@@ -6,13 +6,6 @@
 
 <p align="center">
   <strong>Website E-commerce Fungsional untuk Layanan Top-Up Game</strong>
-  <br />
-  <br />
-  <a href="https://noireveil.github.io/noirestore/"><strong>Lihat Demo Langsung »</strong></a>
-</p>
-
-<p align="center">
-  <img src="https://img.shields.io/badge/Status-Online-brightgreen?style=for-the-badge" alt="Website Status">
 </p>
 
 ---
