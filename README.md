@@ -67,7 +67,7 @@ Untuk mendapatkan pengalaman development terbaik yang menyerupai server online, 
 
 1.  **Clone repository ini:**
     ```bash
-    git clone [https://github.com/noireveil/noirestore.git](https://github.com/noireveil/noirestore.git)
+    git clone https://github.com/noireveil/noirestore.git
     ```
 2.  **Buka folder proyek** dengan code editor seperti **Visual Studio Code**.
 3.  **Instal ekstensi "Live Server"** (oleh Ritwick Dey) dari marketplace VS Code.
